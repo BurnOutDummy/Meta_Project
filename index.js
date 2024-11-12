@@ -1,26 +1,22 @@
-const { Console } = require("console");
-const express = require("express");
-const http = require('http');
-const { console } = require("inspector");
-const app = express();
-const port = 3000;
-const {Server} = require('socket.io')
-const server = http.createServer(app);
+const http = require('http')
+const express = require('express')
+const {Server} = require('socket.io') 
+const port = process.env.PORT || 5000
+const httproutes = require('./routes/route')
 
 
-const httproute = require('./routes/route')
-console.log("hello world ")
+const app = express()
+const server = http.createServer(app)
+const io = new Server(server) 
 
-app.use('/',httproute)
-app.get('/Home',(req,res)=>{
-  res.send("Hello World")
-  console.log("connected to http ")
-})
-const io = new Server(server);
+// Http server 
+app.use('/home',httproutes)
+
 io.on('connection',()=>{
-  Console.log(`Somebody has connected to the server `)
+  console.log("Idiot login")
 })
 
-server.listen(port, ()=>{
-  console.log(`Server is listening on port : ${port}`)
+
+server.listen(port,()=>{
+  console.log(`Server is listening on port: ${port}`)
 })
