@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router()
 
-router.get('/v1',(req,res)=>{
+router.get('/home',(req,res)=>{
   res.json({
     name:"Nischal",
     age: "10",
