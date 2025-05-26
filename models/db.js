@@ -1,6 +1,7 @@
-const  mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-const  Connect = (url)=>{
-  return mongoose.connect(url)
+const Connect = (url) => {
+    return mongoose.connect(url)
 }
+const git = "it is not working"
 module.exports = Connect
